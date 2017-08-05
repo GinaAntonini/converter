@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="main.css">
 	<title></title>
 </head>
 <body>
 <div>
-	<input type="temperature" name="temperature">
-	<input type="radio">From C to F</input>
-	<input type="radio">From F to C</input>
-	<div id="convertedTemp"></div>
-	<button>Display Converted Temperature</button>
-	<button>Clear Input Field</button>
+	<input type="text" id="textInput" name="temperature">
+	<input type="radio" name="radio" value="C">From C to F</input>
+	<input type="radio" name="radio" value="F">From F to C</input>
+	<div id="convertedTemp">
+	</div>
+	<button id="displayConvertedTemp">Display Converted Temperature</button>
+	<button id="clearInputField">Clear Input Field</button>
 </div>
 <script type="text/javascript" src="converter.js"></script>
 </body>
