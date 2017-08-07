@@ -1,9 +1,8 @@
 console.log("hello out there!");
 
-var inputTemp = document.getElementById("tempEntered").value = "";
+var inputTemp = document.getElementById("tempEntered").value;
 
 //Funcations that converts Temps:
-
 function celsiusToFarenheit (inputTemp) {
 	return (inputTemp * 1.8) + 32;
 }
@@ -13,10 +12,9 @@ function farenheitToCelsius (inputTemp) {
 }
 
 //function that determines which conversion should happen based on radio button selected (if/else)
-function scale() { 
+function scale(inputTemp) { 
 	return document.querySelector('input[name="radio"]:checked').value;
 }; 
-
 
 function converter (scaleSelected, inputTemp) {
 	if (scaleSelected === "C") {
@@ -27,7 +25,6 @@ function converter (scaleSelected, inputTemp) {
 }
 
 //function that turns converted temp red if greater than 90F/32C, blue if less than 32F/0C, and for any other temperature-green
-
 function colorChanger (inputTemp, scaleSelected) {
 if ((scaleSelected === "C" && inputTemp > 32) || (scaleSelected === "F" && inputTemp > 90)) {
 		return "red"
@@ -39,7 +36,6 @@ if ((scaleSelected === "C" && inputTemp > 32) || (scaleSelected === "F" && input
 }
 
 //function that uses the results of previous functions 
-
 function puppetMaster () {
 	var scaleSelected = scale()
 	var convertedTemp = converter(scaleSelected, inputTemp)
@@ -47,17 +43,13 @@ function puppetMaster () {
 	console.log(convertedTemp)
 }
 
-
-///////////////////function to be executed when the converter button is clicked///////////////////////////
-
+///////////////////BUTTON FUNCTIONS////////////////////////
 var converterButton = document.getElementById("converterButton")
 
 function displayConvertedTemp () {
 	converterButton.addEventListener('click', puppetMaster);
 	return convertedTemp;
 }
-
-///////////////////function to be executed when the clear input field button is clicked/////////////////////
 
 function clearFields() {
      document.getElementById("tempEntered").value = "";
