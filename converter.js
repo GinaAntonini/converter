@@ -22,7 +22,7 @@ function converter (scaleSelected, inputTemp) {
 	} else { 
 		 return farenheitToCelsius(inputTemp)
 	}
-}
+}	
 
 //function that turns converted temp red if greater than 90F/32C, blue if less than 32F/0C, and for any other temperature-green
 function colorChanger (inputTemp, scaleSelected) {
@@ -46,15 +46,16 @@ function puppetMaster () {
 ///////////////////BUTTON FUNCTIONS////////////////////////
 var converterButton = document.getElementById("converterButton")
 
-function displayConvertedTemp () {
-	converterButton.addEventListener('click', puppetMaster);
-	return convertedTemp;
-}
+// function displayConvertedTemp () {
+// 	converterButton(puppetMaster);
+// 	return convertedTemp;
+// }
 
-function clearFields() {
+function clearField(tempEntered) {
      document.getElementById("tempEntered").value = "";
 }
 
+tempEntered.addEventListener('click', [function clearField])
 ////////function to make the enter key work/////////////
 
 
