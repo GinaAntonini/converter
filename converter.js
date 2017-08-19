@@ -1,9 +1,11 @@
 console.log("hello out there!");
 
-var inputTemp = document.getElementById("tempEntered").value;
 
-//Funcations that converts Temps:
+var converterButton = document.getElementById("converterButton");
+
+//Functions that converts Temps:
 function celsiusToFarenheit (inputTemp) {
+	console.log(inputTemp);
 	return (inputTemp * 1.8) + 32;
 }
 
@@ -25,37 +27,44 @@ function converter (scaleSelected, inputTemp) {
 }	
 
 //function that turns converted temp red if greater than 90F/32C, blue if less than 32F/0C, and for any other temperature-green
-function colorChanger (inputTemp, scaleSelected) {
-if ((scaleSelected === "C" && inputTemp > 32) || (scaleSelected === "F" && inputTemp > 90)) {
-		return "red"
-	} else if ((scaleSelected === "C" && inputTemp < 0) || (scaleSelected === "F" && inputTemp < 32)) {
-		return "blue"
+function createDomString (convertedTemp, scaleSelected) {
+if ((scaleSelected === "C" && convertedTemp > 32) || (scaleSelected === "F" && convertedTemp > 90)) {
+		return `<h2 class="red">${convertedTemp}</h2>`
+	} else if ((scaleSelected === "C" && convertedTemp < 0) || (scaleSelected === "F" && convertedTemp < 32)) {
+		return `<h2 class="blue">${convertedTemp}</h2>`
 	} else {
-		return "green"
+		return `<h2 class="green">${convertedTemp}</h2>`
 	}
+}
+
+var outputDiv = document.getElementById("outputDiv");
+
+function writeToDom(domString){
+	outputDiv.innerHTML = domString;
 }
 
 //function that uses the results of previous functions 
 function puppetMaster () {
+	var inputTemp = document.getElementById("tempEntered").value;
 	var scaleSelected = scale()
 	var convertedTemp = converter(scaleSelected, inputTemp)
-	// var changedColor = colorChanger(convertedTemp, scaleSelected)
+	var domString = createDomString(convertedTemp, scaleSelected)
+	writeToDom(domString)
 	console.log(convertedTemp)
+	console.log(domString)
 }
 
 ///////////////////BUTTON FUNCTIONS////////////////////////
-var converterButton = document.getElementById("converterButton")
 
-// function displayConvertedTemp () {
-// 	converterButton(puppetMaster);
-// 	return convertedTemp;
-// }
+converterButton.addEventListener('click', puppetMaster);
+
+var clearBtn = document.getElementById("clearButton");
 
 function clearField(tempEntered) {
      document.getElementById("tempEntered").value = "";
 }
 
-tempEntered.addEventListener('click', [function clearField])
+clearBtn.addEventListener('click', clearField);
 ////////function to make the enter key work/////////////
 
 
